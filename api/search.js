@@ -1,7 +1,13 @@
 export default function handler(req, res) {
 
-  // БАЗА (пока вручную)
-const products = [
+  const allowedOrigin = "https://insulinguru.com";
+  const origin = req.headers.origin;
+
+  if (origin !== allowedOrigin) {
+    return res.status(403).json({ error: "Forbidden" });
+  }
+
+  const products = [
   { name: "Kale", ii: 5 },
   { name: "Arugula", ii: 5 },
   { name: "Cauliflower", ii: 20 },
@@ -145,7 +151,6 @@ const products = [
   { name: "Whey", ii: 140 },
   { name: "Feta cheese", ii: 45 },
   { name: "Powdered milk", ii: 95 },
-
   { name: "Oats", ii: 40 },
   { name: "Barley", ii: 50 },
   { name: "Bread", ii: 100 },
@@ -171,7 +176,6 @@ const products = [
   { name: "Instant oatmeal", ii: 79 },
   { name: "Oatmeal", ii: 40 },
   { name: "Granola", ii: 70 },
-
   { name: "Chickpeas", ii: 40 },
   { name: "Hummus", ii: 35 },
   { name: "Lentils", ii: 58 },
@@ -179,13 +183,11 @@ const products = [
   { name: "Edamame", ii: 50 },
   { name: "Baked beans", ii: 120 },
   { name: "Beans", ii: 40 },
-  { name: "Peas", ii: 45 },
   { name: "Mung beans", ii: 30 },
   { name: "Miso paste", ii: 25 },
   { name: "Kidney beans", ii: 40 },
   { name: "Tempeh", ii: 30 },
   { name: "Navy beans", ii: 65 },
-
   { name: "Peanut butter", ii: 30 },
   { name: "Pecan", ii: 10 },
   { name: "Peanut", ii: 20 },
@@ -201,8 +203,6 @@ const products = [
   { name: "Flax seeds", ii: 20 },
   { name: "Sunflower seeds", ii: 35 },
   { name: "Pumpkin seeds", ii: 25 },
-  { name: "Cashew", ii: 22 },
-
   { name: "Honey", ii: 62 },
   { name: "Sugar", ii: 70 },
   { name: "Sucrose", ii: 70 },
@@ -231,16 +231,13 @@ const products = [
   { name: "Crackers", ii: 87 },
   { name: "Muffin", ii: 76 },
   { name: "Biscuits (cookies)", ii: 92 },
-
   { name: "Muesli", ii: 46 },
   { name: "Cornflakes", ii: 118 },
   { name: "Oat flakes", ii: 40 },
   { name: "Shredded wheat", ii: 75 },
-
   { name: "Chicken egg (boiled)", ii: 31 },
   { name: "Egg (raw)", ii: 31 },
   { name: "Egg (fried)", ii: 31 },
-
   { name: "Potato (fried)", ii: 90 },
   { name: "French fries", ii: 74 },
   { name: "Potato chips", ii: 90 },
@@ -250,7 +247,6 @@ const products = [
   { name: "Potato chip", ii: 115 },
   { name: "Baked potato", ii: 105 },
   { name: "Boiled cooled potatoes", ii: 90 },
-
   { name: "Strawberry jam", ii: 70 },
   { name: "Raspberry jam", ii: 65 },
   { name: "Cherry jam", ii: 60 },
@@ -263,7 +259,6 @@ const products = [
   { name: "Peach jam", ii: 70 },
   { name: "Currant jam", ii: 55 },
   { name: "Feijoa jam", ii: 50 },
-
   { name: "Red wine dry", ii: 0 },
   { name: "Red wine semisweet", ii: 10 },
   { name: "Red wine sweet", ii: 20 },
@@ -287,7 +282,6 @@ const products = [
   { name: "Flat white (no sugar)", ii: 35 },
   { name: "Raf coffee (no added sugar)", ii: 60 },
   { name: "Decaf coffee (no sugar)", ii: 5 },
-
   { name: "Seaweed", ii: 20 },
   { name: "Mayonnaise", ii: 5 },
   { name: "Olives", ii: 15 },
@@ -297,13 +291,11 @@ const products = [
   { name: "Goat milk", ii: 85 },
   { name: "Falafel", ii: 40 },
   { name: "Pizza", ii: 80 },
-
   { name: "Wheat flour (refined)", ii: 80 },
   { name: "White flour products", ii: 100 },
   { name: "Whole wheat flour", ii: 70 },
   { name: "Almond flour", ii: 7 },
   { name: "Coconut flour", ii: 15 },
-
   { name: "Butter", ii: 3 },
   { name: "Margarine", ii: 3 },
   { name: "Olive oil", ii: 3 },
