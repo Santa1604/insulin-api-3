@@ -1,12 +1,5 @@
 export default function handler(req, res) {
 
-  const allowedOrigin = "https://insulinguru.com";
-  const origin = req.headers.origin;
-
-  if (origin !== allowedOrigin) {
-    return res.status(403).json({ error: "Forbidden" });
-  }
-
   const products = [
   { name: "Kale", ii: 5 },
   { name: "Arugula", ii: 5 },
@@ -308,7 +301,7 @@ export default function handler(req, res) {
     p.name.toLowerCase().includes(q)
   );
 
-  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
   res.status(200).json(result);
 }
