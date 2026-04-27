@@ -1,13 +1,5 @@
 export default function handler(req, res) {
 
-  // CORS — ТОЛЬКО твой сайт
-  const allowedOrigin = "https://insulinguru.com";
-  const origin = req.headers.origin;
-
-  if (origin !== allowedOrigin) {
-    return res.status(403).json({ error: "Forbidden" });
-  }
-
   // БАЗА (пока вручную)
 const products = [
   { name: "Kale", ii: 5 },
